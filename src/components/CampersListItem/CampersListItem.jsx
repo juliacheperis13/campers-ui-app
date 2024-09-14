@@ -15,7 +15,7 @@ const featuredList = [
   { name: "radio", icon: "radio" },
 ];
 
-const CampersListItem = ({ camper: { gallery, description }, camper }) => {
+const CampersListItem = ({ camper, isFavorite }) => {
   const features = featuredList.filter((feature) => camper[feature.name]);
   const transmission = { name: camper.transmission, icon: "transmission" };
   const engine = { name: camper.engine, icon: "fuel" };
@@ -23,13 +23,13 @@ const CampersListItem = ({ camper: { gallery, description }, camper }) => {
   return (
     <div className={clsx([styles.itemContainer, "flex"])}>
       <CamperGallery
-        gallery={gallery}
-        description={description}
+        gallery={camper.gallery}
+        description={camper.description}
         isCover={true}
       />
       <div className="flex column overflowHidden">
         <div className={clsx([styles.itemInfoWrapper, "flex", "column"])}>
-          <CamperInfo camper={camper} isFavShown={true} />
+          <CamperInfo camper={camper} isFavShown={true} isFav={isFavorite}/>
           <CamperDescription
             description={camper.description}
             isMultiLine={false}

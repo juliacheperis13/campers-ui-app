@@ -3,21 +3,27 @@ import { persistStore, persistReducer, PERSIST } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import { campersReducer } from "./campers/campersSlice";
 import { filtersReducer } from "./filters/filtersSlice";
+import { favoriteCampersReducer } from "./favoriteCampers/favoriteCampersSlice";
 
 const persistConfig = {
-  key: "campers",
+  key: "favoriteCampers",
   storage,
 };
+
+const persistedFavoriteReducer = persistReducer(
+  persistConfig,
+  favoriteCampersReducer
+);
 
 const rootReducer = combineReducers({
   campers: campersReducer,
   filters: filtersReducer,
+  favoriteCampers: persistedFavoriteReducer,
 });
 
-const persistedReducer = persistReducer(persistConfig, rootReducer);
 
 export const store = configureStore({
-  reducer: persistedReducer,
+  reducer: rootReducer,
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {

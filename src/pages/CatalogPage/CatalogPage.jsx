@@ -6,20 +6,19 @@ import Button from "../../components/Button/Button";
 import CampersList from "../../components/CampersList/CampersList";
 import ScrollToTop from "../../components/ScrollToTop/ScrollToTop";
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { fetchCampers } from "../../redux/campers/campersOps";
 import { selectFilteredCampers } from "../../redux/campers/campersSelectors";
 // import { selectIsLoading } from "../../redux/campers/campersSelectors";
+import // selectEquipmentList,
+// selectTypeList,
+"../../redux/filters/filtersSelectors";
 import {
-  selectEquipmentList,
-  selectTypeList,
-} from "../../redux/filters/filtersSelectors";
-import {
-  setEquipmentList,
-  setEquipment,
-  setTypeList,
-  setType,
-  setLocation,
+  // setEquipmentList,
+  // setEquipment,
+  // setTypeList,
+  // setType,
+  // setLocation,
   applyFilters,
 } from "../../redux/filters/filtersSlice";
 
@@ -53,38 +52,69 @@ const typesDefault = [
 ];
 
 const CatalogPage = () => {
+  const [equipmentList, setEquipmentList] = useState([]);
+  const [typeList, setTypeList] = useState([]);
+  const [location, setLocation] = useState("");
+  const [itemsNumber, setItemsNumber] = useState(5);
+
   const handleEquipmentChange = (value) => {
-    dispatch(setEquipment(value));
+    // dispatch(setEquipment(value));
+    setEquipmentList(
+      equipmentList.map((equipment) => ({
+        ...equipment,
+        isSelected:
+          equipment.value === value
+            ? !equipment.isSelected
+            : equipment.isSelected,
+      }))
+    );
   };
   const handleTypeChange = (value) => {
-    dispatch(setType(value));
+    setTypeList(
+      typeList.map((equipment) => ({
+        ...equipment,
+        isSelected: equipment.value === value ? !equipment.isSelected : false,
+      }))
+    );
+    // dispatch(setType(value));
   };
 
   const handleSearchChange = (value) => {
-    dispatch(setLocation(value));
+    setLocation(value);
+    // dispatch(setLocation(value));
   };
 
   const handleSearch = () => {
-    dispatch(applyFilters());
+    setItemsNumber(5);
+    dispatch(
+      applyFilters({
+        location,
+        equipmentList,
+        typeList,
+      })
+    );
   };
 
-  const handleLoadMore = () => {};
-
-  const isLoadMoreAvailable = true;
-
-  // const campers = [];
+  const handleLoadMore = () => {
+    setItemsNumber(itemsNumber + 5);
+  };
 
   const dispatch = useDispatch();
 
   const campers = useSelector(selectFilteredCampers);
-  const equipments = useSelector(selectEquipmentList);
-  const types = useSelector(selectTypeList);
+  // const equipments = useSelector(selectEquipmentList);
+  // const types = useSelector(selectTypeList);
 
   useEffect(() => {
+    // dispatch(setEquipmentList(equipmentsDefault));
+    // dispatch(setTypeList(typesDefault));
     dispatch(fetchCampers());
-    dispatch(setEquipmentList(equipmentsDefault));
-    dispatch(setTypeList(typesDefault));
   }, [dispatch]);
+
+  useEffect(() => {
+    setEquipmentList(equipmentsDefault);
+    setTypeList(typesDefault);
+  }, []);
 
   return (
     <div
@@ -105,12 +135,12 @@ const CatalogPage = () => {
         />
         <span className={styles.filtersTitle}>Filters</span>
         <FilterGrid
-          options={equipments}
+          options={equipmentList}
           title="Vehicle equipment"
           handleClick={handleEquipmentChange}
         />
         <FilterGrid
-          options={types}
+          options={typeList}
           title="Vehicle type"
           handleClick={handleTypeChange}
         />
@@ -119,10 +149,12 @@ const CatalogPage = () => {
         </Button>
       </div>
       <div className="flex column items-center">
-        <CampersList campers={campers} />
-        <Button type="ghost" clickHandler={handleLoadMore}>
-          Load more
-        </Button>
+        <CampersList campers={campers.slice(0, itemsNumber) } />
+        {itemsNumber < campers.length && (
+          <Button type="ghost" clickHandler={handleLoadMore}>
+            Load more
+          </Button>
+        )}
       </div>
     </div>
   );

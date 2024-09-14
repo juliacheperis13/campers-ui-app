@@ -1,11 +1,26 @@
 import styles from "./CamperInfo.module.css";
+import { useDispatch } from "react-redux";
+import {
+  addFavoriteCamper,
+  removeFavoriteCamper,
+} from "../../redux/favoriteCampers/favoriteCampersSlice";
 import clsx from "clsx";
 
 const CamperInfo = ({
-  camper: { name, price, rating, reviews, location },
+  camper: { name, price, rating, reviews, location, id },
   isFavShown,
-  isFav
+  isFav,
 }) => {
+  const dispatch = useDispatch();
+
+  const handleToggleFav = () => {
+    if (!isFav) {
+      dispatch(addFavoriteCamper(id));
+    } else {
+      dispatch(removeFavoriteCamper(id));
+    }
+  };
+
   return (
     <div
       className={clsx([
@@ -34,11 +49,9 @@ const CamperInfo = ({
         </div>
       </div>
       <div className="flex gap12">
-        {/* TO DO: add price formatting */}
         <span className={styles.price}>€{price}.00</span>
-        {/* TO DO: add fav */}
         {isFavShown && (
-          <button className={styles.favoritesButton}>
+          <button className={styles.favoritesButton} onClick={handleToggleFav}>
             <svg className={clsx([styles.icon, isFav && styles.isFavorite])}>
               <use href="/icons.svg#favorites"></use>
             </svg>
