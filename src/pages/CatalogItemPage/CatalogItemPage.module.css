@@ -1,0 +1,13 @@
+.container.catalogItemPageContainer {
+  padding: 64px;
+}
+
+.detailsContainer {
+  margin: 0 0 64px 0;
+}
+
+.tabsContainer { 
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 50px; 
+}

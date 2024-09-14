@@ -1,0 +1,93 @@
+.container {
+  max-width: 1440px;
+  padding: 0 64px;
+  margin: auto;
+}
+
+.flex {
+  display: flex;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.spaceBetween {
+  justify-content: space-between;
+}
+
+.selfCenter {
+  align-self: center;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.column {
+  flex-direction: column;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.fullImage {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+.overflowHidden {
+  overflow: hidden;
+}
+
+.gap12 {
+  gap: 12px;
+}
+
+.gap16 {
+  gap: 16px;
+}
+
+.gap8 {
+  gap: 8px;
+}
+
+.gap4 {
+  gap: 8px;
+}
+
+.gap24 {
+  gap: 24px;
+}
+
+.gap32 {
+  gap: 32px;
+}
+
+.react-tabs__tab-list {
+  display: flex;
+  border-bottom: 1px solid var(--middle-light-grey);
+  margin: 0 0 32px 0;
+  gap: 32px;
+}
+
+.react-tabs__tab {
+  font-family: Inter;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24px;
+  padding: 24px 0;
+  cursor: pointer;
+  outline: none;
+}
+
+.react-tabs__tab--selected {
+  border-bottom: 5px solid var(--red);
+}
+
+.divider {
+  margin: 24px 0;
+  border-bottom: 1px solid var(--middle-light-grey);
+}

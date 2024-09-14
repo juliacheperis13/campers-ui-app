@@ -1,0 +1,12 @@
+.itemImageContainer {
+  border-radius: 10px;
+  width: 292px;
+  height: 320px;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.galleryContainer {
+  display: flex;
+  gap: 48px;
+}

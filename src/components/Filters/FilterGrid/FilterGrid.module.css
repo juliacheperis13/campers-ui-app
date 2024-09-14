@@ -1,0 +1,18 @@
+.filterGridTitle {
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24px;
+  color: var(--dark-grey);
+}
+
+.filterGridDivider {
+  margin: 24px 0;
+  border-bottom: 1px solid var(--middle-light-grey);
+}
+
+.filterGridContainer {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 8px;
+  column-gap: 12px;
+}

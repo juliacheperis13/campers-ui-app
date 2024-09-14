@@ -1,0 +1,16 @@
+:root {
+  --dark-grey: #101828;
+  --middle-dark-grey: #475467;
+  --grey: #6C717B;
+  --orange: #E44848;
+  --red: #D84343;
+  --yellow: #FFC531;
+  --middle-light-grey: #DADDE1;
+  --middle-grey: #F2F4F7;
+  --light-grey: #F7F7F7;
+  --white: #FFFFFF;
+}
+
+.bc-light-grey {
+  background-color: var(--light-grey);
+}

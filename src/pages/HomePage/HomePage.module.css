@@ -1,0 +1,15 @@
+.heroImageContainer {
+  background-image: url(src/assets/images/hero-image@1x.jpg);
+  background-size: cover;
+  background-position: center;
+  height: 696px;
+}
+
+.container.heroImageContainer {
+  padding: 250px 64px 0 64px;
+}
+
+.descriptionContainer {
+  margin: 0 0 40px 0;
+  color: var(--white);
+}

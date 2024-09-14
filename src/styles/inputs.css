@@ -1,0 +1,49 @@
+.inputWrapper {
+  display: flex;
+  align-items: center;
+  padding: 18px 20px;
+  border-radius: 12px;
+  background-color: var(--light-grey);
+  color: var(--dark-grey);
+  gap: 8px;
+}
+
+.inputIcon {
+  color: var(--grey);
+  width: 20px;
+  height: 20px;
+}
+
+.inputIcon.filled {
+  color: var(--dark-grey);
+}
+
+.input,
+.react-datepicker__input-container input {
+  font-family: "Inter", sans-serif;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-size: 16px;
+  color: var(--dark-grey);
+  width: 100%;
+}
+
+.input::placeholder {
+  font-family: "Inter", sans-serif;
+  color: var(--grey)
+}
+
+.inputLabel {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+  color: var(--grey);
+  margin: 0 0 6px 0;
+  display: block;
+}
+
+textarea {
+  resize: none;
+  min-height: 118px;
+}

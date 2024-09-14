@@ -1,0 +1,13 @@
+h1 {
+  font-size: 48px;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.text-middle-dark-grey {
+  color: var(--middle-dark-grey);
+}

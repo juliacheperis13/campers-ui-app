@@ -1,0 +1,30 @@
+.button {
+  font-family: "Inter", sans-serif;
+  padding: 16px 48px;
+  border-radius: 200px;
+  outline: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+.button.primary {
+  background-color: var(--orange);
+  color: var(--white);
+}
+
+.button.primary:hover {
+  background-color: var(--red);
+}
+
+.button.ghost {
+  background-color: var(--white);
+  color: var(--dark-grey);
+  border: 1px solid var(--middle-light-grey);
+}
+
+.button.ghost:hover {
+  border: 1px solid var(--red);
+}

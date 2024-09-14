@@ -1,0 +1,27 @@
+.filterGridButton {
+  width: 112px;
+  height: 96px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 8px;
+  border: 1px solid var(--middle-light-grey);
+  background-color: var(--white);
+  color: var(--dark-grey);
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 500;
+  padding: 0px 12px;
+}
+
+.filterGridButtonActive {
+  border: 1px solid var(--red);
+}
+
+.filterGridButton {
+  svg {
+    width: 32px;
+    height: 32px;
+  }
+}
