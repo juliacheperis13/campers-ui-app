@@ -34,7 +34,7 @@ const CamperReviews = ({ camper }) => {
               </div>
             </div>
           </div>
-          <p className={styles.review}>{review.comment}</p>
+          <p className="titleSmall">{review.comment}</p>
         </div>
       ))}
     </div>

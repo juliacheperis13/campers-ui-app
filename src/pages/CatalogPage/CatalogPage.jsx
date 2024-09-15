@@ -5,13 +5,12 @@ import Button from "../../components/Button/Button";
 import CampersList from "../../components/CampersList/CampersList";
 import FilterGrid from "../../components/Filters/FilterGrid/FilterGrid";
 import Search from "../../components/Filters/Search/Search";
-import { equipmentsDefault, typesDefault } from '../../constants/filters';
+import { equipmentsDefault, typesDefault } from "../../constants/filters";
 import { fetchCampers } from "../../redux/campers/campersOps";
 import { selectFilteredCampers } from "../../redux/campers/campersSelectors";
 import { resetCampers } from "../../redux/campers/campersSlice";
 import { applyFilters, resetFilters } from "../../redux/filters/filtersSlice";
 import styles from "./CatalogPage.module.css";
-
 
 const CatalogPage = () => {
   const [equipmentList, setEquipmentList] = useState([]);
@@ -107,7 +106,11 @@ const CatalogPage = () => {
         </Button>
       </div>
       <div className="flex column itemsCenter">
-        <CampersList campers={campers.slice(0, itemsNumber)} />
+        {campers.length === 0 ? (
+          <p className="titleSmall">No campers available</p>
+        ) : (
+          <CampersList campers={campers.slice(0, itemsNumber)} />
+        )}
         {itemsNumber < campers.length && (
           <Button kind="ghost" clickHandler={handleLoadMore}>
             Load more
