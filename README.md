@@ -18,13 +18,13 @@ Make sure you have the following software installed on your machine:
 1. **Clone the repository**:
 
    ```bash
-   git clone https://github.com/your-username/your-repo-name.git
+   git clone https://github.com/juliacheperis13/campers-ui-app.git
    ```
 
 2. **Navigate to the project directory**:
 
    ```bash
-   cd your-repo-name
+   cd campers-ui-app
    ```
 
 3. **Install dependencies**:
