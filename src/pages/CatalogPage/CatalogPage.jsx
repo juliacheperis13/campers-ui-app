@@ -5,7 +5,6 @@ import Button from "../../components/Button/Button";
 import CampersList from "../../components/CampersList/CampersList";
 import FilterGrid from "../../components/Filters/FilterGrid/FilterGrid";
 import Search from "../../components/Filters/Search/Search";
-import ScrollToTop from "../../components/ScrollToTop/ScrollToTop";
 import { equipmentsDefault, typesDefault } from '../../constants/filters';
 import { fetchCampers } from "../../redux/campers/campersOps";
 import { selectFilteredCampers } from "../../redux/campers/campersSelectors";
@@ -85,7 +84,6 @@ const CatalogPage = () => {
         styles.catalogPageContainer,
       ])}
     >
-      <ScrollToTop />
       <div className={styles.sideContainer}>
         <Search
           icon="map"

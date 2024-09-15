@@ -7,7 +7,6 @@ import CamperBookForm from "../../components/CamperBookForm/CamperBookForm";
 import CamperDetails from "../../components/CamperDetails/CamperDetails";
 import CamperFeatures from "../../components/CamperFeatures/CamperFeatures";
 import CamperReviews from "../../components/CamperReviews/CamperReviews";
-import ScrollToTop from "../../components/ScrollToTop/ScrollToTop";
 import { fetchCamper } from "../../redux/campers/campersOps";
 import { selectCamper } from "../../redux/campers/campersSelectors";
 import { resetCamper } from "../../redux/campers/campersSlice";
@@ -36,7 +35,6 @@ const CatalogItemPage = () => {
         styles.catalogItemPageContainer,
       ])}
     >
-      <ScrollToTop />
       {camper && (
         <div>
           <div className={styles.detailsContainer}>
