@@ -8,6 +8,13 @@ h3 {
   font-weight: 600;
 }
 
-.text-middle-dark-grey {
+.textMiddleDarkGrey {
   color: var(--middle-dark-grey);
+}
+
+.ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-grow: 0;
+  white-space: nowrap;
 }

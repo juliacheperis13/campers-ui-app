@@ -3,6 +3,7 @@ import { createSelector } from "@reduxjs/toolkit";
 
 export const selectCampers = (state) => state.campers.items;
 export const selectIsLoading = (state) => state.campers.isLoading;
+export const selectCamper = (state) => state.campers.item;
 
 export const selectFilteredCampers = createSelector(
   [selectCampers, selectAppliedFilters],
@@ -13,8 +14,6 @@ export const selectFilteredCampers = createSelector(
       const isLocationMatched =
         !location.trim().length ||
         camper.location.toUpperCase().includes(location.trim().toUpperCase());
-
-      console.log(location, camper.location);
 
       if (!isLocationMatched) {
         return;

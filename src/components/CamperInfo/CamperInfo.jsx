@@ -31,8 +31,8 @@ const CamperInfo = ({
         !isFavShown && "column",
       ])}
     >
-      <div className="flex column gap8">
-        <h2>{name}</h2>
+      <div className="flex column gap8 overflowHidden">
+        <h2 className="ellipsis">{name}</h2>
         <div className="flex gap16">
           <span className={styles.rating}>
             <svg>

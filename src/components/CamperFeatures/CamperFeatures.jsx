@@ -1,26 +1,11 @@
 import styles from "./CamperFeatures.module.css";
 import clsx from "clsx";
 import ChipsList from "../../components/ChipsList/ChipsList";
-
-const vehicleDetailsAttributes = [
-  "form",
-  "length",
-  "width",
-  "height",
-  "tank",
-  "consumption",
-];
-
-const featuredList = [
-  { name: "AC", icon: "ac" },
-  { name: "bathroom", icon: "bathroom" },
-  { name: "kitchen", icon: "kitchen" },
-  { name: "TV", icon: "tv" },
-  { name: "radio", icon: "radio" },
-];
+import { equipments } from "../../constants/equipments";
+import { attributes } from "../../constants/attributes";
 
 const CamperFeatures = ({ camper }) => {
-  const features = featuredList.filter((feature) => camper[feature.name]);
+  const features = equipments.filter((feature) => camper[feature.name]);
   const transmission = { name: camper.transmission, icon: "transmission" };
   const engine = { name: camper.engine, icon: "fuel" };
 
@@ -33,13 +18,16 @@ const CamperFeatures = ({ camper }) => {
         <h3>Vehicle details</h3>
         <div className="divider"></div>
         <div className="detailsList">
-          {vehicleDetailsAttributes.map((attribute) => (
-            <div key={attribute} className={clsx([styles.detailsItem, "flex", "spaceBetween"])}>
+          {attributes.map((attribute) => (
+            <div
+              key={attribute}
+              className={clsx([styles.detailsItem, "flex", "spaceBetween"])}
+            >
               <span>
                 {attribute.charAt(0).toUpperCase() + attribute.slice(1)}
               </span>
               <span>
-                {camper[attribute].charAt(0).toUpperCase() + 
+                {camper[attribute].charAt(0).toUpperCase() +
                   camper[attribute].slice(1)}
               </span>
             </div>

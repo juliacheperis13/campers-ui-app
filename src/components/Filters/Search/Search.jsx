@@ -6,7 +6,6 @@ const Search = ({ title, handleChange, placeholder, icon }) => {
 
   function handleInputChange(event) {
     setInputValue(event.target.value);
-
     handleChange(event.target.value);
   }
 

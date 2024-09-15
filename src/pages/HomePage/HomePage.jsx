@@ -1,7 +1,7 @@
+import clsx from "clsx";
 import { NavLink } from "react-router-dom";
 import Button from "../../components/Button/Button";
 import styles from "./HomePage.module.css";
-import clsx from "clsx";
 
 const HomePage = () => {
   return (

@@ -1,55 +1,18 @@
 import clsx from "clsx";
-import styles from "./CatalogPage.module.css";
-import Search from "../../components/Filters/Search/Search";
-import FilterGrid from "../../components/Filters/FilterGrid/FilterGrid";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import Button from "../../components/Button/Button";
 import CampersList from "../../components/CampersList/CampersList";
+import FilterGrid from "../../components/Filters/FilterGrid/FilterGrid";
+import Search from "../../components/Filters/Search/Search";
 import ScrollToTop from "../../components/ScrollToTop/ScrollToTop";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect, useState } from "react";
+import { equipmentsDefault, typesDefault } from '../../constants/filters';
 import { fetchCampers } from "../../redux/campers/campersOps";
 import { selectFilteredCampers } from "../../redux/campers/campersSelectors";
-// import { selectIsLoading } from "../../redux/campers/campersSelectors";
-import // selectEquipmentList,
-// selectTypeList,
-"../../redux/filters/filtersSelectors";
-import {
-  // setEquipmentList,
-  // setEquipment,
-  // setTypeList,
-  // setType,
-  // setLocation,
-  applyFilters,
-} from "../../redux/filters/filtersSlice";
+import { resetCampers } from "../../redux/campers/campersSlice";
+import { applyFilters, resetFilters } from "../../redux/filters/filtersSlice";
+import styles from "./CatalogPage.module.css";
 
-const equipmentsDefault = [
-  { label: "AC", icon: "#ac", value: "AC", isSelected: false },
-  {
-    label: "Automatic",
-    icon: "#transmission",
-    value: "automatic",
-    isSelected: false,
-  },
-  { label: "Kitchen", icon: "#kitchen", value: "kitchen", isSelected: false },
-  { label: "TV", icon: "#tv", value: "TV", isSelected: false },
-  {
-    label: "Bathroom",
-    icon: "#bathroom",
-    value: "bathroom",
-    isSelected: false,
-  },
-];
-
-const typesDefault = [
-  { label: "Van", icon: "#van", value: "van", isSelected: false },
-  {
-    label: "Fully Integrated",
-    icon: "#fullyIntegrated",
-    value: "fullyIntegrated",
-    isSelected: false,
-  },
-  { label: "Alcove", icon: "#alcove", value: "alcove", isSelected: false },
-];
 
 const CatalogPage = () => {
   const [equipmentList, setEquipmentList] = useState([]);
@@ -57,8 +20,10 @@ const CatalogPage = () => {
   const [location, setLocation] = useState("");
   const [itemsNumber, setItemsNumber] = useState(5);
 
+  const dispatch = useDispatch();
+  const campers = useSelector(selectFilteredCampers);
+
   const handleEquipmentChange = (value) => {
-    // dispatch(setEquipment(value));
     setEquipmentList(
       equipmentList.map((equipment) => ({
         ...equipment,
@@ -76,12 +41,10 @@ const CatalogPage = () => {
         isSelected: equipment.value === value ? !equipment.isSelected : false,
       }))
     );
-    // dispatch(setType(value));
   };
 
   const handleSearchChange = (value) => {
     setLocation(value);
-    // dispatch(setLocation(value));
   };
 
   const handleSearch = () => {
@@ -99,16 +62,13 @@ const CatalogPage = () => {
     setItemsNumber(itemsNumber + 5);
   };
 
-  const dispatch = useDispatch();
-
-  const campers = useSelector(selectFilteredCampers);
-  // const equipments = useSelector(selectEquipmentList);
-  // const types = useSelector(selectTypeList);
-
   useEffect(() => {
-    // dispatch(setEquipmentList(equipmentsDefault));
-    // dispatch(setTypeList(typesDefault));
     dispatch(fetchCampers());
+
+    return () => {
+      dispatch(resetCampers());
+      dispatch(resetFilters());
+    }; // <-- reset when unmounting
   }, [dispatch]);
 
   useEffect(() => {
@@ -148,8 +108,8 @@ const CatalogPage = () => {
           Search
         </Button>
       </div>
-      <div className="flex column items-center">
-        <CampersList campers={campers.slice(0, itemsNumber) } />
+      <div className="flex column itemsCenter">
+        <CampersList campers={campers.slice(0, itemsNumber)} />
         {itemsNumber < campers.length && (
           <Button type="ghost" clickHandler={handleLoadMore}>
             Load more

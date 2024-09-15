@@ -1,13 +1,11 @@
 import FilterGridItem from "../FilterGridItem/FilterGridItem";
 import styles from "./FilterGrid.module.css";
-import clsx from "clsx";
 
 const FilterGrid = ({ title, options, handleClick }) => {
-  console.log(options);
   return (
     <div>
       <p className={styles.filterGridTitle}>{title}</p>
-      <div className={styles.filterGridDivider}></div>
+      <div className="divider"></div>
       <div className={styles.filterGridContainer}>
         {options?.length > 0 &&
           options.map((option) => (

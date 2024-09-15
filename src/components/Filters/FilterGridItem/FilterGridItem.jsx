@@ -8,7 +8,7 @@ const FilterGridItem = ({ label, icon, value, isSelected, handleClick }) => {
       onClick={() => handleClick(value)}
     >
       <svg className={styles.icon}>
-        <use href={`/icons.svg${icon}`}></use>
+        <use href={`/icons.svg#${icon}`}></use>
       </svg>
       <p>{label}</p>
     </button>

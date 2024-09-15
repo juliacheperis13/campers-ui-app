@@ -1,22 +1,15 @@
-import styles from "./CampersListItem.module.css";
+import clsx from "clsx";
 import { NavLink } from "react-router-dom";
 import Button from "../../components/Button/Button";
-import ChipsList from "../../components/ChipsList/ChipsList";
-import CamperInfo from "../../components/CamperInfo/CamperInfo";
-import CamperGallery from "../../components/CamperGallery/CamperGallery";
 import CamperDescription from "../../components/CamperDescription/CamperDescription";
-import clsx from "clsx";
-
-const featuredList = [
-  { name: "AC", icon: "ac" },
-  { name: "bathroom", icon: "bathroom" },
-  { name: "kitchen", icon: "kitchen" },
-  { name: "TV", icon: "tv" },
-  { name: "radio", icon: "radio" },
-];
+import CamperGallery from "../../components/CamperGallery/CamperGallery";
+import CamperInfo from "../../components/CamperInfo/CamperInfo";
+import ChipsList from "../../components/ChipsList/ChipsList";
+import { equipments } from '../../constants/equipments';
+import styles from "./CampersListItem.module.css";
 
 const CampersListItem = ({ camper, isFavorite }) => {
-  const features = featuredList.filter((feature) => camper[feature.name]);
+  const features = equipments.filter((feature) => camper[feature.name]);
   const transmission = { name: camper.transmission, icon: "transmission" };
   const engine = { name: camper.engine, icon: "fuel" };
 

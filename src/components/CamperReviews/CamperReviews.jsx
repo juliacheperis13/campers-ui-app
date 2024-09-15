@@ -7,8 +7,8 @@ const CamperReviews = ({ camper }) => {
     id: uuidv4(),
     ...review,
   }));
+  const totalStars = 5;
 
-  console.log(mappedReviews)
   return (
     <div className={clsx([styles.reviewsTabContainer, "flex", "column"])}>
       {mappedReviews.map((review) => (
@@ -20,14 +20,13 @@ const CamperReviews = ({ camper }) => {
             <div className="flex column gap4">
               <p className={styles.userName}>{review.reviewer_name}</p>
               <div className={styles.rating}>
-                {[...Array(5)].map((_, index) => (
+                {[...Array(totalStars)].map((_, index) => (
                   <svg
                     key={index}
-                    className={
-                      index < review.reviewer_rating
-                        ? styles.filledStar
-                        : styles.emptyStar
-                    }
+                    className={clsx([
+                      index < review.reviewer_rating && styles.filledStar,
+                      styles.star,
+                    ])}
                   >
                     <use href="/icons.svg#rating"></use>
                   </svg>

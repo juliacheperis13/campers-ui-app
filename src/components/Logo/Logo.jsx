@@ -4,7 +4,7 @@ import styles from "./Logo.module.css";
 const Logo = () => {
   return (
       <NavLink to="/" className={styles.logoNavLink}>
-        <span>Travel</span><span className="text-middle-dark-grey">Trucks</span>
+        <span>Travel</span><span className="textMiddleDarkGrey">Trucks</span>
       </NavLink>
   );
 };

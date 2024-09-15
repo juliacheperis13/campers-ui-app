@@ -11,6 +11,10 @@
   --white: #FFFFFF;
 }
 
-.bc-light-grey {
+.bcLightGrey {
   background-color: var(--light-grey);
+}
+
+.bbMiddleGrey {
+  border-bottom: 1px solid var(--middle-grey);
 }

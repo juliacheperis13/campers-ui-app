@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchCampers } from "./campersOps";
+import { fetchCampers, fetchCamper } from "./campersOps";
 
 const toggleIsLoading = (state, value) => {
   state.isLoading = value;
@@ -25,7 +25,7 @@ const handleFulfilled = (state) => {
 
 const campersSlice = createSlice({
   name: "campers",
-  initialState: { items: [], isLoading: false, error: null },
+  initialState: { items: [], isLoading: false, error: null, item: null },
   extraReducers: (builder) => {
     builder
       .addCase(fetchCampers.pending, handlePending)
@@ -33,8 +33,24 @@ const campersSlice = createSlice({
         state.items = action.payload;
         handleFulfilled(state);
       })
-      .addCase(fetchCampers.rejected, handleRejected);
+      .addCase(fetchCampers.rejected, handleRejected)
+      .addCase(fetchCamper.pending, handlePending)
+      .addCase(fetchCamper.fulfilled, (state, action) => {
+        state.item = action.payload;
+        handleFulfilled(state);
+      })
+      .addCase(fetchCamper.rejected, handleRejected);
+  },
+  reducers: {
+    resetCamper: (state) => {
+      state.item = null;
+    },
+    resetCampers: (state) => {
+      state.items = [];
+    },
   },
 });
+
+export const { resetCamper, resetCampers } = campersSlice.actions;
 
 export const campersReducer = campersSlice.reducer;
