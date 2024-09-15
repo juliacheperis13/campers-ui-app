@@ -1,7 +1,6 @@
-import styles from "./CamperDetails.module.css";
-import CamperInfo from "../../components/CamperInfo/CamperInfo";
 import CamperDescription from "../../components/CamperDescription/CamperDescription";
 import CamperGallery from "../../components/CamperGallery/CamperGallery";
+import CamperInfo from "../../components/CamperInfo/CamperInfo";
 
 const CamperDetails = ({ camper }) => {
   return (

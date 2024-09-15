@@ -9,7 +9,7 @@ const buildLinkClass = ({ isActive }) => {
 const Navigation = () => {
   return (
     <nav className="fullWidth">
-      <ul className={clsx([styles.navList, 'flex', 'justifyCenter', 'itemsCenter'])}>
+      <ul className="gap32 flex justifyCenter itemsCenter">
         <li>
           <NavLink to="/" className={buildLinkClass}>
             Home

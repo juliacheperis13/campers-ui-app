@@ -1,5 +1,4 @@
 import styles from "./CamperGallery.module.css";
-import clsx from "clsx";
 
 const CamperGallery = ({ gallery, isCover }) => {
   const items = isCover ? gallery.slice(0, 1) : gallery;

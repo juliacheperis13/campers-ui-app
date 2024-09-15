@@ -9,10 +9,10 @@ import "./index.css";
 import { persistor, store } from "./redux/store.js";
 import "/src/styles/buttons.css";
 import "/src/styles/colors.css";
+import "/src/styles/datepicker.css";
 import "/src/styles/inputs.css";
 import "/src/styles/layout.css";
 import "/src/styles/typography.css";
-import "/src/styles/datepicker.css";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>

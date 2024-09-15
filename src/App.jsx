@@ -2,7 +2,6 @@ import { lazy, Suspense, useEffect } from "react";
 import { toast, Toaster } from "react-hot-toast";
 import { useSelector } from "react-redux";
 import { Route, Routes } from "react-router-dom";
-import "./App.css";
 import Header from "./components/Header/Header";
 import Loader from "./components/Loader/Loader";
 import ScrollToTop from "./components/ScrollToTop/ScrollToTop";

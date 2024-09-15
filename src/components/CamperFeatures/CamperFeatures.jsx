@@ -1,8 +1,8 @@
-import styles from "./CamperFeatures.module.css";
 import clsx from "clsx";
 import ChipsList from "../../components/ChipsList/ChipsList";
-import { equipments } from "../../constants/equipments";
 import { attributes } from "../../constants/attributes";
+import { equipments } from "../../constants/equipments";
+import styles from "./CamperFeatures.module.css";
 
 const CamperFeatures = ({ camper }) => {
   const features = equipments.filter((feature) => camper[feature.name]);

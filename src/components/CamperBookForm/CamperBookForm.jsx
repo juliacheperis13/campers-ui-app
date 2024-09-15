@@ -17,8 +17,10 @@ const CamperBookForm = () => {
     comment: "",
   };
 
-  const submitHandler = () => {
-    toast.success('Thank you for the booking!')
+  const submitHandler = (values, { resetForm }) => {
+    toast.success("Thank you for the booking!");
+    resetForm();
+    setDateRange([null, null]);
   };
 
   return (
@@ -68,7 +70,9 @@ const CamperBookForm = () => {
                     }}
                     placeholderText="Booking date*"
                     dateFormat="dd/MM/yyyy"
-                    formatWeekDay={nameOfDay => nameOfDay.toUpperCase().slice(0,3)}
+                    formatWeekDay={(nameOfDay) =>
+                      nameOfDay.toUpperCase().slice(0, 3)
+                    }
                   />
                 </div>
               </div>
