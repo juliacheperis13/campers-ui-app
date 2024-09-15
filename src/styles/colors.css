@@ -18,3 +18,7 @@
 .bbMiddleGrey {
   border-bottom: 1px solid var(--middle-grey);
 }
+
+.textMiddleDarkGrey {
+  color: var(--middle-dark-grey);
+}

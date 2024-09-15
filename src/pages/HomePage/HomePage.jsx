@@ -11,7 +11,7 @@ const HomePage = () => {
         <h2>You can find everything you want in our catalog</h2>
       </div>
       <NavLink to="/catalog">
-        <Button type="primary">View Now</Button>
+        <Button kind="primary">View Now</Button>
       </NavLink>
     </div>
   );

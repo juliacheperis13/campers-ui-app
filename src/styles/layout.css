@@ -91,3 +91,8 @@
   margin: 24px 0;
   border-bottom: 1px solid var(--middle-light-grey);
 }
+
+.my24 {
+  margin-top: 24px;
+  margin-bottom: 24px;
+}

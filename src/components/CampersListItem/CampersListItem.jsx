@@ -30,7 +30,7 @@ const CampersListItem = ({ camper, isFavorite }) => {
           <ChipsList items={[transmission, engine, ...features]} />
         </div>
         <NavLink to={`/catalog/${camper.id}`}>
-          <Button type="primary">Show more</Button>
+          <Button kind="primary">Show more</Button>
         </NavLink>
       </div>
     </div>

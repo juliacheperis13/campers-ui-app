@@ -1,7 +1,7 @@
 import clsx from "clsx";
 
-const Button = ({ children, type, clickHandler }) => {
-  return <button className={clsx([type, 'button'])} onClick={clickHandler}>{children}</button>;
+const Button = ({ children, type = "button", kind, clickHandler }) => {
+  return <button type={type} className={clsx([kind, 'button'])} onClick={clickHandler}>{children}</button>;
 };
 
 export default Button;

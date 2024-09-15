@@ -1,11 +1,12 @@
-import styles from "./CamperBookForm.module.css";
-import { Field, Form, Formik } from "formik";
-import Button from "../../components/Button/Button";
-import DatePicker from "react-datepicker";
 import clsx from "clsx";
+import { Field, Form, Formik } from "formik";
 import { useState } from "react";
+import DatePicker from "react-datepicker";
+import { toast } from "react-hot-toast";
+import Button from "../../components/Button/Button";
+import styles from "./CamperBookForm.module.css";
 
-const CamperBookForm = ({ handleSubmit }) => {
+const CamperBookForm = () => {
   const [dateRange, setDateRange] = useState([null, null]);
   const [startDate, endDate] = dateRange;
 
@@ -16,7 +17,9 @@ const CamperBookForm = ({ handleSubmit }) => {
     comment: "",
   };
 
-  const submitHandler = () => {};
+  const submitHandler = () => {
+    toast.success('Thank you for the booking!')
+  };
 
   return (
     <div className={clsx([styles.formTabContainer, "flex", "column", "gap24"])}>
@@ -26,66 +29,68 @@ const CamperBookForm = ({ handleSubmit }) => {
           Stay connected! We are always ready to help you.
         </p>
       </div>
-      {/* <div className="flex column gap12"> */}
       <Formik initialValues={initialValues} onSubmit={submitHandler}>
         {({ setFieldValue }) => (
-          <Form className="flex column gap12">
-            <div className="inputContainer">
-              <div className="inputWrapper">
-                <Field
-                  className="input"
-                  type="text"
-                  name="name"
-                  placeholder="Name*"
-                  required
-                />
+          <Form className="flex column gap24">
+            <div className="flex column gap12">
+              <div className="inputContainer">
+                <div className="inputWrapper">
+                  <Field
+                    className="input"
+                    type="text"
+                    name="name"
+                    placeholder="Name*"
+                    required
+                  />
+                </div>
+              </div>
+              <div className="inputContainer">
+                <div className="inputWrapper">
+                  <Field
+                    className="input"
+                    type="email"
+                    name="email"
+                    placeholder="Email*"
+                    required
+                  />
+                </div>
+              </div>
+              <div className="inputContainer">
+                <div className="inputWrapper">
+                  <DatePicker
+                    selectsRange
+                    calendarStartDay={1}
+                    startDate={startDate}
+                    endDate={endDate}
+                    onChange={(update) => {
+                      setDateRange(update);
+                      setFieldValue("bookingDate", update);
+                    }}
+                    placeholderText="Booking date*"
+                    dateFormat="dd/MM/yyyy"
+                    formatWeekDay={nameOfDay => nameOfDay.toUpperCase().slice(0,3)}
+                  />
+                </div>
+              </div>
+              <div className="inputContainer">
+                <div className="inputWrapper">
+                  <Field
+                    as="textarea"
+                    name="comment"
+                    placeholder="Comment"
+                    className="input"
+                  />
+                </div>
               </div>
             </div>
-            <div className="inputContainer">
-              <div className="inputWrapper">
-                <Field
-                  className="input"
-                  type="email"
-                  name="email"
-                  placeholder="Email*"
-                  required
-                />
-              </div>
-            </div>
-
-            <div className="inputContainer">
-              <div className="inputWrapper">
-                <DatePicker
-                  selectsRange
-                  startDate={startDate}
-                  endDate={endDate}
-                  onChange={(update) => {
-                    setDateRange(update);
-                    setFieldValue("bookingDate", update);
-                  }}
-                  placeholderText="Booking date*"
-                  dateFormat="dd/MM/yyyy"
-                />
-              </div>
-            </div>
-            <div className="inputContainer">
-              <div className="inputWrapper">
-                <Field
-                  as="textarea"
-                  name="comment"
-                  placeholder="Comment"
-                  className="input"
-                />
-              </div>
+            <div className="selfCenter">
+              <Button kind="primary" type="submit">
+                Submit
+              </Button>
             </div>
           </Form>
         )}
       </Formik>
-      <div className="selfCenter">
-        <Button type="primary" clickHandler={handleSubmit}>
-          Submit
-        </Button>
-      </div>
     </div>
   );
 };

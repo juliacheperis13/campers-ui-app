@@ -104,14 +104,14 @@ const CatalogPage = () => {
           title="Vehicle type"
           handleClick={handleTypeChange}
         />
-        <Button type="primary" clickHandler={handleSearch}>
+        <Button kind="primary" clickHandler={handleSearch}>
           Search
         </Button>
       </div>
       <div className="flex column itemsCenter">
         <CampersList campers={campers.slice(0, itemsNumber)} />
         {itemsNumber < campers.length && (
-          <Button type="ghost" clickHandler={handleLoadMore}>
+          <Button kind="ghost" clickHandler={handleLoadMore}>
             Load more
           </Button>
         )}
